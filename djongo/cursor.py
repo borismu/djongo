@@ -48,6 +48,8 @@ class Cursor:
 
     def execute(self, sql, params=None):
         try:
+            sql = sql.replace("::int[]", "")
+            sql = sql.replace("::string[]", "")
             self.result = Query(
                 self.client_conn,
                 self.db_conn,
